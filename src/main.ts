@@ -25,7 +25,7 @@ const initApp = (): void =>{
 
         template.render(fullList);
 
-        input.value = '';
+        input.value = ''; 
     })
     const clearItem = document.getElementById("clearItemsButton") as HTMLButtonElement
 

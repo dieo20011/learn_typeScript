@@ -13,7 +13,7 @@ export default class FullList implements List{
 
     static instance: FullList = new FullList();
 
-    constructor(
+    private constructor(
         private _list: ListItems[] = []
     ) {}
 
@@ -39,7 +39,7 @@ export default class FullList implements List{
 
     clearList(): void {
         this._list = [],
-        this.save
+        this.save();
     }
 
     addItem(itemObj: ListItems): void {
@@ -50,10 +50,6 @@ export default class FullList implements List{
     removeItem(id: string): void {
         this._list = this._list.filter((item)=> item.id !== id)
         this.save();
-    }
-
-    set list(list:ListItems[]){
-        this._list = list;
     }
 
 }

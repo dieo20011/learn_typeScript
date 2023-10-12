@@ -22,19 +22,19 @@ export default class FullList implements List{
     }
 
     load(): void {
-        const storedList: string | null = localStorage.getItem("myList");
+        const storedList: string | null = localStorage.getItem("myList"); // get list from localStorage
 
-        if(typeof storedList !== "string") return
-        const parsedList: {_id:string, _item: string, _check: boolean}[]= JSON.parse(storedList);
+        if(typeof storedList !== "string") return // if list null return nothing
+        const parsedList: {_id:string, _item: string, _check: boolean}[]= JSON.parse(storedList);// transform JSON string to object array 
 
         parsedList.forEach(itemObj=>{
             const newListItem = new ListItems(itemObj._id, itemObj._item, itemObj._check);
-            FullList.instance.addItem(newListItem);
+            FullList.instance.addItem(newListItem); // add item to list
         })
     }
 
     save(): void{
-        localStorage.setItem("myList", JSON.stringify(this._list));
+        localStorage.setItem("myList", JSON.stringify(this._list));// save list to localstorage as a JSON string
     }
 
     clearList(): void {

@@ -9,7 +9,7 @@ const initApp = (): void =>{
     
     const itemEntryForm = document.getElementById("itemEntryForm") as HTMLFormElement
     itemEntryForm.addEventListener("submit", (event: SubmitEvent):void =>{
-        event.preventDefault();
+        event.preventDefault();// prevent form submission from ref refreshing page
 
         const input = document.getElementById("newItem") as HTMLInputElement
         const newEntryText: string = input.value.trim()
@@ -17,15 +17,15 @@ const initApp = (): void =>{
         if(!newEntryText.length) return
 
         const itemId: number = fullList.list.length
-        ? parseInt(fullList.list[fullList.list.length-1].id) +1 : 1
+        ? parseInt(fullList.list[fullList.list.length-1].id) +1 : 1 // create a unique ID for new item
 
         const newItem = new ListItems(itemId.toString(), newEntryText);
 
-        fullList.addItem(newItem);
+        fullList.addItem(newItem);// add the newitem to fullList
 
-        template.render(fullList);
+        template.render(fullList);// render update a new list
 
-        input.value = ''; 
+        input.value = ''; // clear input when submitted
     })
     const clearItem = document.getElementById("clearItemsButton") as HTMLButtonElement
 
